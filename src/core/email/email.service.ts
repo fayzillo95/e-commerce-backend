@@ -15,8 +15,8 @@ export class EmailService {
             port: 465,
             secure: true,
             auth: {
-                user: 'fayzillofn30@gmail.com',
-                pass: 'hwhphlkacfqynuve',
+                user: 'omadbek1223erubdnx@gmail.com',
+                pass: 'tytuwpsplbfzrtwh',
             },
         });
     }

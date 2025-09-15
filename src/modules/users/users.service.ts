@@ -82,9 +82,10 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException("User not found ")
     }
+    console.log(user)
     return {
       message: `This action returns a [ ${id} ] user`,
-      data: user
+      user
     };
   }
 
@@ -124,7 +125,7 @@ export class UsersService {
         }
       }
     }else{
-      data['avatar'] = "https://www.w3schools.com/howto/img_avatar.png"
+      data['avatar'] = oldUser.avatar || "https://www.w3schools.com/howto/img_avatar.png"
     }
 
     try {

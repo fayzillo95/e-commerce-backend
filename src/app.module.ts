@@ -8,6 +8,7 @@ import { AdditionalModule } from './modules/additional/additional.module';
 import { BuildTypeModule } from './modules/build-type/build-type.module';
 import { PropertiesModule } from './modules/properties/properties.module';
 import { PropertyMediaModule } from './modules/property-media/property-media.module';
+import { FavoriteModule } from './modules/favorite/favorite.module';
 @Module({
   imports: [
     UsersModule,
@@ -16,7 +17,8 @@ import { PropertyMediaModule } from './modules/property-media/property-media.mod
     AdditionalModule,
     BuildTypeModule,
     PropertiesModule,
-    PropertyMediaModule, 
+    PropertyMediaModule,
+    FavoriteModule, 
   ],
   providers : [
     {

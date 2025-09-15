@@ -17,7 +17,7 @@ export class CreateAdditionalDto {
   @IsString()
   @IsNotEmpty()
   label: string;
-
+  
   @ApiProperty({example : 'Modern House'})
   @IsString()
   @IsNotEmpty()

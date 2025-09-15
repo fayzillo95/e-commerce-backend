@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsUUID, IsNotEmpty } from 'class-validator';
+import { IsString, IsUUID, IsNotEmpty, IsJSON, IsOptional } from 'class-validator';
 
 export class CreatePropertyMediaDto {
   @ApiProperty({
@@ -12,8 +12,10 @@ export class CreatePropertyMediaDto {
 
   // Fayllar multer orqali handle bo'ladi, shuning uchun DTO da alohida field kerak emas
   // Lekin agar kerak bo'lsa:
-  
+  @IsOptional()
   features?: Express.Multer.File[];
+  @IsOptional()
   gallery?: Express.Multer.File[];
+  @IsOptional()
   attachments?: Express.Multer.File[];
 }

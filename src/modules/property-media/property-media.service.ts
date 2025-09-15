@@ -21,8 +21,7 @@ export class PropertyMediaService {
   ) {
 
     await checkExistsResurs(this.prisma,ModelsEnumInPrisma.PROPERTIES,"id",data.propertyId)
-
-    // Fayllarni saqlash va URL larini olish
+    console.log(files)
     const featuresUrls = files.features ? 
       files.features.map(file => urlGenerator(this.config,file.filename) ) : []
     
@@ -51,7 +50,26 @@ export class PropertyMediaService {
         property: {
           select: {
             title: true,
-            address: true
+            additionals: true,
+            owner : {
+              select : {
+                fullName : true,
+                email : true,
+                avatar : true,
+                role : true,
+              },
+            },
+            locationUrl : true,
+            address : true,
+            category : true,
+            description : true,
+            price :  true,
+            isSale : true,
+            status : true,
+            features : true,
+            discount : true,
+            id : true,
+            ownerId : true,
           }
         }
       }

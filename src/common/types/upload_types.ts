@@ -14,6 +14,7 @@ export const courseFileFields = [
 export const fileStorages = (allowedMimes: string[]) => ({
   storage: diskStorage({
     destination: (req, file, cb) => {
+      console.log("File Storage file ", file)
       const filePath = getPathInFileType(file.originalname);
       cb(null, filePath);
     },

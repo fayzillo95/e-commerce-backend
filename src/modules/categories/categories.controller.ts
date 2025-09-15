@@ -16,7 +16,9 @@ import { ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { categoryApiBody } from 'src/common/types/api.body.types';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { fileStorages } from 'src/common/types/upload_types';
+import { Public } from 'src/global/decorators/auth.decorators';
 
+@Public()
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}

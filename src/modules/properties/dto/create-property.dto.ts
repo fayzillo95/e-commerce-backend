@@ -10,6 +10,8 @@ import {
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { UserData } from 'src/global/decorators/auth.decorators';
+import { JwtPayload } from 'jsonwebtoken';
 
 export enum SaleType {
   RENT = 'RENT',
@@ -97,15 +99,6 @@ export class CreatePropertyDto {
   @IsBoolean()
   @IsOptional()
   isSale?: boolean;
-
-  @ApiProperty({
-    description: 'Owner ID',
-    example: '69eccdcd-f02b-495e-b730-88c4623ac6fe',
-    format: 'uuid'
-  })
-  @IsUUID()
-  @IsNotEmpty()
-  ownerId: string;
 
   @ApiProperty({
     description: 'Category ID',

@@ -19,12 +19,12 @@ import { fileStorages } from 'src/common/types/upload_types';
 import { Public, UserData } from 'src/global/decorators/auth.decorators';
 import { JwtPayload } from 'src/common/config/jwt.secrets';
 
-@Public()
+// @Public()
 @Controller('property-media')
 export class PropertyMediaController {
   constructor(private readonly propertyMediaService: PropertyMediaService) { }
 
-  @Post()
+  @Post("create")
   @ApiConsumes("multipart/form-data")
   @ApiBody(propertyMediaApiBody)
   @UseInterceptors(FileFieldsInterceptor([
@@ -40,20 +40,21 @@ export class PropertyMediaController {
       attachments?: Express.Multer.File[] 
     },
   ) {
+    console.log("PropertyMedia Controller files ->  : ",files)
     return this.propertyMediaService.create(createPropertyMediaDto, files);
   }
 
-  @Get()
+  @Get("get-all")
   findAll() {
     return this.propertyMediaService.findAll();
   }
 
-  @Get(':id')
+  @Get('get-one/:id')
   findOne(@Param('id') id: string) {
     return this.propertyMediaService.findOne(id); // String bo'lishi kerak, chunki UUID
   }
 
-  @Patch(':id')
+  @Patch('update-one/:id')
   @UseInterceptors(FileFieldsInterceptor([
     { name: 'features', maxCount: 10 },
     { name: 'gallery', maxCount: 20 },
@@ -71,7 +72,7 @@ export class PropertyMediaController {
     return this.propertyMediaService.update(id, updatePropertyMediaDto, files);
   }
 
-  @Delete(':id')
+  @Delete('delete-one/:id')
   remove(@Param('id') id: string) {
     return this.propertyMediaService.remove(id);
   }
